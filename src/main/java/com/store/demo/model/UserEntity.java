@@ -1,4 +1,4 @@
-package com.store.demo.models;
+package com.store.demo.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,8 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "TBL_PRODUCTS")
-public class ProductEntity {
+@Table(name = "TBL_USERS")
+public class UserEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,8 +18,8 @@ public class ProductEntity {
 	@Column(name = "name")
 	private String name;
 
-	@Column(name = "price")
-	private Integer price;
+	@Column(name = "email", nullable = false, length = 200)
+	private String email;
 
 	public Long getId() {
 		return id;
@@ -37,17 +37,17 @@ public class ProductEntity {
 		this.name = name;
 	}
 
-	public Integer getPrice() {
-		return price;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setPrice(Integer price) {
-		this.price = price;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	@Override
 	public String toString() {
-		return "ProductEntity [id=" + id + ", name=" + name + ", price=" + price
+		return "UserEntity [id=" + id + ", name=" + name + ", email=" + email
 				+ "]";
 	}
 }

@@ -1,4 +1,4 @@
-package com.store.demo.services;
+package com.store.demo.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,33 +8,32 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.store.demo.exception.RecordNotFoundException;
-import com.store.demo.models.ProductEntity;
-import com.store.demo.models.UserEntity;
-import com.store.demo.repositories.ProductRepository;
+import com.store.demo.model.UserEntity;
+import com.store.demo.repository.UserRepository;
  
 @Service
-public class ProductService {
+public class UserService {
      
     @Autowired
-    ProductRepository repository;
+    UserRepository repository;
      
-    public List<ProductEntity> getAllProducts()
+    public List<UserEntity> getAllUsers()
     {
-        List<ProductEntity> productList = repository.findAll();
+        List<UserEntity> userList = repository.findAll();
          
-        if(productList.size() > 0) {
-            return productList;
+        if(userList.size() > 0) {
+            return userList;
         } else {
-            return new ArrayList<ProductEntity>();
+            return new ArrayList<UserEntity>();
         }
     }
      
-    public ProductEntity getProductById(Long id) throws RecordNotFoundException
+    public UserEntity getUserById(Long id) throws RecordNotFoundException
     {
-        Optional<ProductEntity> product = repository.findById(id);
+        Optional<UserEntity> user = repository.findById(id);
          
-        if(product.isPresent()) {
-            return product.get();
+        if(user.isPresent()) {
+            return user.get();
         } else {
             throw new RecordNotFoundException("No user record exist for given id");
         }
@@ -56,11 +55,11 @@ public class ProductService {
 	 * return entity; } }
 	 */
      
-    public void deleteProductById(Long id) throws RecordNotFoundException
+    public void deleteUserById(Long id) throws RecordNotFoundException
     {
-        Optional<ProductEntity> product = repository.findById(id);
+        Optional<UserEntity> user = repository.findById(id);
          
-        if(product.isPresent())
+        if(user.isPresent())
         {
             repository.deleteById(id);
         } else {

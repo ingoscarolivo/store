@@ -1,4 +1,4 @@
-package com.store.demo.controllers;
+package com.store.demo.controller;
 
 import java.util.List;
 
@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.store.demo.exception.RecordNotFoundException;
-import com.store.demo.models.ProductEntity;
-import com.store.demo.models.UserEntity;
-import com.store.demo.services.UserService;
-import com.store.demo.services.ProductService;
+import com.store.demo.model.ProductEntity;
+import com.store.demo.model.UserEntity;
+import com.store.demo.service.UserService;
+import com.store.demo.service.ProductService;
  
 @RestController
 @RequestMapping("/store")
