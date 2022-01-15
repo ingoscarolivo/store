@@ -19,7 +19,7 @@ public class ProductEntity {
 	private String name;
 
 	@Column(name = "price")
-	private Integer price;
+	private Double price;
 
 	public Long getId() {
 		return id;
@@ -37,11 +37,11 @@ public class ProductEntity {
 		this.name = name;
 	}
 
-	public Integer getPrice() {
+	public Double getPrice() {
 		return price;
 	}
 
-	public void setPrice(Integer price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 
