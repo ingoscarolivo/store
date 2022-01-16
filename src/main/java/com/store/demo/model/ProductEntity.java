@@ -1,5 +1,7 @@
 package com.store.demo.model;
 
+import java.util.Base64;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,41 +15,43 @@ public class ProductEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long idProduct;
 
-	@Column(name = "name")
-	private String name;
+	@Column(name = "description")
+	private String description;
 
 	@Column(name = "price")
-	private Double price;
+	private String price;
 
-	public Long getId() {
-		return id;
+	public Long getIdProduct() {
+		return idProduct;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setIdProduct(Long idProduct) {
+		this.idProduct = idProduct;
 	}
 
-	public String getName() {
-		return name;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
-	public Double getPrice() {
-		return price;
+	public String getPrice() {
+		byte[] decodedBytes = Base64.getUrlDecoder().decode(price);
+		String decodedPrice = new String(decodedBytes);
+		return decodedPrice;
 	}
 
-	public void setPrice(Double price) {
-		this.price = price;
+	public void setPrice(String price) {
+		this.price =  Base64.getEncoder().encodeToString(price.getBytes());
 	}
 
 	@Override
 	public String toString() {
-		return "ProductEntity [id=" + id + ", name=" + name + ", price=" + price
+		return "ProductEntity [id=" + idProduct + ", name=" + description + ", price=" + price
 				+ "]";
 	}
 }
